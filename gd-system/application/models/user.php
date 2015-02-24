@@ -101,37 +101,44 @@ Class User extends CI_Model
     }
 
 
-    function do_add_user_process()
+    function do_add_user_model($full_name, $username, $password, $password1, $role_code)
     {
         $full_name = $this->input->post('full_name');
-        $tel_no = $this->input->post('tel_no');
         $username = $this->input->post('username');
         $password = $this->input->post('password');
+        $password1 = $this->input->post('password1');
         $role_code = $this->input->post('role_code');
  
         $data = array(
          'full_name'=>$full_name,
-         'tel_no'=>$tel_no,
          'username'=>$username,
          'password'=>md5($password),
          'role_code'=>$role_code
         );
-
+      if($password == $password1)
+      {
        $qry = $this->db->select('username')->from('users')->where('username', $username)->get();
 
        if ($qry->num_rows == 0) 
        {
         $this->db->insert('users', $data);
         $this->session->set_flashdata('msg', 'SUCCESFULLY ADDED USER');
+         redirect('manageUser/add_user');
       
        }
        else
        {
           $this->session->set_flashdata('msg', 'username already exist');
        }
+      }else
+      {
+        $this->session->set_flashdata('msg', 'Password does not Match');
+                 redirect('manageUser/add_user');
+      } 
+    }
+     
 
-     }
-
+     
     
     function do_user_del($id)
     {

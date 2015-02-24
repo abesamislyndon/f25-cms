@@ -5,12 +5,15 @@ class Category_model extends CI_Model
 
     function show_category()
     {
+
        $this->db->select('*');
        $this->db->from('item_category');
+      // $this->db->join('item_category', 'item.item_category = item_category.cat_name', 'inner')->group_by('item_category.cat_name');
        $query = $this->db->get();
        return $result = $query->result();
 
     }
+
 
     function do_insert_category($category)
       {

@@ -38,8 +38,10 @@
 |
 */
 
-$route['default_controller'] = "main";
-$route['404_override'] = '';
+$route['default_controller'] = "Login";
+$route['404_override'] = 'Page404';
+//$route['update_item/item_details/(:any)'] = "update_item/item_details/$1/$2";
+$route['gd-system/update_item/item_details/(:num)'] = "gd-system/update_item/item_details/$1";
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

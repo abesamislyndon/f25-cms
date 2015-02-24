@@ -1,7 +1,7 @@
 <?php
 if (!defined('BASEPATH'))exit('No direct script access allowed');
 
-class VerifyLogin extends CI_Controller
+class Verifylogin extends CI_Controller
 {
     function __construct()
     {
@@ -25,8 +25,12 @@ class VerifyLogin extends CI_Controller
         {         
             if($this->session->userdata['logged_in']['role_code'] == '1')
               {
-                   redirect(base_url('main'), 'refresh');
+                   redirect(base_url('dashboard'), 'refresh');
               }
+           if($this->session->userdata['logged_in']['role_code'] == '2')
+              {
+                redirect(base_url('supplier_main'), 'refresh');
+              }  
       
           }
         

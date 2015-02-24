@@ -2,18 +2,19 @@
 session_start();
 class Login extends CI_Controller {
 
-		 function __construct()
-		 {
-		   parent::__construct();
+ function __construct()
+ {
+   parent::__construct();
 
-		 }
+ }
 
-		 function index()
-		 {
-		 
-		   $this->load->view('login');
+ function index()
+ {
+ 
+   $this->load->view('login');
 
-		 }
+ }
+ 
  function logout()
   {
      $this->session->unset_userdata('logged_in');
@@ -22,3 +23,5 @@ class Login extends CI_Controller {
   }
 
 }
+/* End of file login.php */
+/* Location: ./application/controllers/login.php */
